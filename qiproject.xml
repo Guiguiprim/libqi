@@ -5,11 +5,6 @@
   <maintainer email="vincent.palancher@softbankrobotics.com">Vincent Palancher</maintainer>
   <maintainer email="julien.bernard@external.softbankrobotics.com">Julien Bernard</maintainer>
   <qibuild name="libqi">
-    <depends buildtime="true" runtime="true" names="dl boost pthread systemd openssl" />
-    <depends testtime="true" buildtime="true" names="gtest gmock" />
+    <depends buildtime="true" runtime="true" names="boost openssl" />
   </qibuild>
-  <project src="dox" />
-
-  <project src="compat/cqit"/>
-  <project src="compat/cqim"/>
 </project>

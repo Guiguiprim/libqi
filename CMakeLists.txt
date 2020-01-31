@@ -14,8 +14,8 @@ set_source_files_properties(src/os_posix.cpp
     COMPILE_DEFINITIONS HAVE_SC_HOST_NAME_MAX)
 
 #### Check optional packages {{{
-qi_add_optional_package(BOOST_LOCALE "Enable usage of boost::locale")
-qi_add_optional_package(SYSTEMD "Enable usage of journald")
+#qi_add_optional_package(BOOST_LOCALE "Enable usage of boost::locale")
+#qi_add_optional_package(SYSTEMD "Enable usage of journald")
 #### }}}
 
 #### Set definitions {{{
@@ -447,7 +447,6 @@ qi_create_lib(qi SHARED
     BOOST_THREAD
     BOOST_CHRONO
     BOOST_FILESYSTEM
-    BOOST_LOCALE
     BOOST_REGEX
     BOOST_PROGRAM_OPTIONS
     BOOST_RANDOM
@@ -487,14 +486,9 @@ if(UNIX AND NOT APPLE AND NOT ANDROID)
 endif()
 #### }}}
 
-qi_stage_lib(qi INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/compat")
+qi_stage_lib(qi)
 
 # Install a share/qi/path.conf so that libqi's sdkPrefix can be found
 file(WRITE "${CMAKE_BINARY_DIR}/path.conf" "# Installed by qibuild. Do not remove\n")
 qi_install_data(${CMAKE_BINARY_DIR}/path.conf SUBFOLDER "qi")
 
-option(BUILD_EXAMPLES "build examples" ON)
-if (BUILD_EXAMPLES)
-  add_subdirectory("examples")
-endif()
-add_subdirectory("tests")
